@@ -5,9 +5,12 @@ x = 1; i = 0
 extrato = {}
 
 
-def extratoConta(extrato):
+def extratoConta(extrato, saldo):
     for chave, valor in extrato.items():
         print(f'ID {chave}: {valor[0]} no valor de R${valor[1]}')
+
+    return menu(saldo)
+        
 
 def limpar():
     time(5)
@@ -19,7 +22,9 @@ def deposito(saldo):
     saldo += _valor
     extrato[x] = ["deposito", _valor]
     x += 1
-    return saldo
+    print(saldo)
+
+    return menu(saldo)
 
 
 def saque(saldo):
@@ -39,7 +44,9 @@ def saque(saldo):
         saldo -= _valor
         extrato[x] = ["saque", _valor]
         x += 1
-        return saldo
+        print(saldo)
+
+    return menu(saldo)
 
 def imprimirMenu():    
     print("""qual operação você dejesa realizar ?
@@ -50,10 +57,10 @@ def imprimirMenu():
                     """)
 
 
-def menu():
-    global saldo
+def menu(saldo):
     imprimirMenu()
-    validador(input(),saldo)
+    validador(input(), saldo)
+    
 
 
 
@@ -70,7 +77,7 @@ def validador(alternativa,saldo):
             saldo = deposito(saldo)
         
         if alternativa == "3":
-            extratoConta(extrato)
+            extratoConta(extrato, saldo)
         
         if alternativa == "4":
             break
