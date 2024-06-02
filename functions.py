@@ -18,11 +18,15 @@ def limpar():
 
 def deposito(saldo):
     global x
-    _valor = int(input("qual valor voce deseja depositar?"))              
-    saldo += _valor
-    extrato[x] = ["deposito", _valor]
-    x += 1
-    print(saldo)
+
+    _valor = int(input("qual valor voce deseja depositar?"))  
+    if _valor <= 0 :
+        print("o valor depositado não pode ser menor que 0")            
+    else:
+        saldo += _valor
+        extrato[x] = ["deposito", _valor]
+        x += 1
+        print(saldo)
 
     return menu(saldo)
 
